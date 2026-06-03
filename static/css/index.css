@@ -4,10 +4,12 @@
 
 body {
     margin: 0;
-    font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
     height: 100vh;
-    overflow: hidden;
-    background: #f7f8fa;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: radial-gradient(circle at top center, rgba(255, 255, 255, 1), rgba(247, 249, 252, 1) 42%), linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    color: #1b1b1f;
     padding-top: 64px;
 }
 
@@ -17,55 +19,58 @@ body {
     left: 0;
     right: 0;
     height: 64px;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #ececec;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
     z-index: 1200;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(16px);
 }
 
 .top-bar-title {
     font-size: 24px;
     font-weight: 700;
-    color: #222;
-    letter-spacing: 1px;
+    color: #111;
+    letter-spacing: 0.3px;
 }
 
 /* ================= 右上角用户信息区 ================= */
 .user-widget {
     position: fixed;
-    top: 0;
+    top: 10px;
     right: 24px;
-    height: 64px; 
     z-index: 1300;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(118, 118, 128, 0.08);
 }
 
 .user-name {
     font-size: 14px;
-    color: #333;
+    color: #16161a;
 }
 
 .user-divider {
-    color: #ddd;
+    color: #d0d0d7;
     font-size: 14px;
 }
 
 .logout-link {
-    color: #666;
+    color: #5e5e67;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s ease;
 }
 
 .logout-link:hover {
-    color: #ff4f4f;
+    color: #ff635f;
 }
 
 /* ================= 填满屏幕最下方的固定操作栏 ================= */
@@ -74,139 +79,156 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 60px; /* 常见的底部标准高度 */
-    background: #ffffff;
-    border-top: 1px solid #e4e7ed;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    height: 76px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -10px 25px rgba(15, 23, 42, 0.08);
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
     z-index: 1300;
 }
 
-/* 均分底部的矩形按钮 */
+/* 均分底部的按钮 */
 .nav-item {
     position: relative;
-    flex: 1; /* 三个按钮平分整个屏幕宽度 */
+    flex: 1;
+    max-width: 220px;
+    margin: 0 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 48px;
     font-size: 15px;
-    color: #555555;
+    color: #4b4b56;
     background: #ffffff;
-    border: none;
-    border-right: 1px solid #f0f2f5; /* 按钮之间的垂直分割线 */
+    border: 1px solid rgba(118, 118, 128, 0.08);
+    border-radius: 999px;
     text-decoration: none;
     cursor: pointer;
     font-family: inherit;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: transform 0.18s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 去除最后一个按钮的右边框 */
-.nav-item:last-child {
-    border-right: none;
-}
-
-/* 鼠标悬停/点击时的浅灰色反馈 */
 .nav-item:hover {
-    background: #f8f9fa;
+    background: #f8fafc;
     color: #111111;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
 }
 
-/* 购物车角标：完美适配底部通栏结构 */
 .nav-item .cart-badge {
     position: absolute;
-    top: 10px;
-    /* 核心居中定位：基于文字偏右侧显示 */
-    left: calc(50% + 28px); 
+    top: 8px;
+    right: 18px;
     min-width: 18px;
     height: 18px;
-    padding: 0 5px;
-    border-radius: 9px;
-    background: #f56c6c; /* 提示红 */
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ff6b6b;
     color: white;
     font-size: 11px;
-    display: none; /* 由 JS 切换 flex/none */
+    display: none;
     align-items: center;
     justify-content: center;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 /* ================= 页面主体与侧边栏 ================= */
 .container {
-    display: flex;
-    height: calc(100vh - 64px);
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 18px;
+    min-height: calc(100vh - 64px);
+    padding: 0 20px 8px;
 }
 
 .sidebar {
-    width: 120px;
-    background: #f5f5f5;
-    border-right: 1px solid #ddd;
-    padding: 10px 0;
+    width: 170px;
+    min-width: 170px;
+    background: rgba(255, 255, 255, 0.98);
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 18px 10px;
     overflow-y: auto;
+    border-radius: 28px;
+    height: calc(100vh - 64px - 16px);
 }
 
 .category {
-    padding: 15px 12px;
+    padding: 14px 14px;
     cursor: pointer;
     border-left: 4px solid transparent;
     transition: all 0.2s ease;
+    border-radius: 18px;
+    background: rgba(245, 247, 250, 0.95);
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 14px;
 }
 
 .category:hover {
-    background: #eaeaea;
+    background: rgba(255, 255, 255, 1);
 }
 
 .category.active {
-    background: white;
-    border-left: 4px solid #ff6b6b;
-    font-weight: bold;
-    color: #ff6b6b;
+    background: #ffffff;
+    border-left: 4px solid #ff5f63;
+    font-weight: 700;
+    color: #ff5f63;
 }
 
 .content {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
-    background: #fff;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.98);
     scroll-behavior: smooth;
-    padding-bottom: 80px; /* 调整此边距，防止商品内容线被最下方的通栏菜单挡住 */
+    padding-bottom: 100px;
+    border-radius: 32px;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
 }
 
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    padding: 26px;
+    border-radius: 32px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
 }
 
 .section h2 {
     margin-top: 0;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    padding-bottom: 14px;
+    color: #111;
+    font-size: 22px;
 }
 
 .item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 12px;
-    margin: 12px 0;
-    background: #fafafa;
-    border-radius: 10px;
-    border: 1px solid #eee;
+    gap: 18px;
+    padding: 18px;
+    margin: 16px 0;
+    background: #f8fbff;
+    border-radius: 26px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .item-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     flex: 1;
 }
 
 .item-image {
-    width: 72px;
-    height: 72px;
-    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
     object-fit: cover;
-    background: #ddd;
+    background: #eef2f7;
     flex-shrink: 0;
 }
 
@@ -215,43 +237,47 @@ body {
 }
 
 .item-name {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
 }
 
 .item-price {
-    color: #666;
-    margin-top: 6px;
+    color: #64656b;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 .add-btn {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border: none;
     border-radius: 50%;
     background: #ff6b6b;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     flex-shrink: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .add-btn:hover {
-    background: #ff4f4f;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(255, 107, 107, 0.18);
 }
 
 /* ================= 购物车面板 (保持原逻辑，位置微调至贴合底部栏) ================= */
 .cart-panel {
     position: fixed;
     right: 24px;
-    bottom: 70px; /* 刚好浮动在底部操作栏上方 */
-    width: 360px;
-    max-height: 440px;
+    bottom: 80px;
+    width: 380px;
+    max-height: 460px;
     overflow: hidden;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
     display: none;
     flex-direction: column;
     z-index: 1250;
@@ -262,44 +288,47 @@ body {
 }
 
 .cart-header {
-    padding: 14px 16px;
-    border-bottom: 1px solid #eee;
-    font-weight: bold;
+    padding: 18px 22px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #111;
 }
 
 .cart-clear {
     border: none;
     background: transparent;
-    color: #999;
+    color: #6d6d76;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .cart-items {
-    padding: 12px 16px;
+    padding: 16px 22px;
     overflow-y: auto;
     flex: 1;
 }
 
 .cart-item {
-    border-bottom: 1px solid #f0f0f0;
-    padding: 10px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 12px 0;
 }
 
 .cart-item-top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .cart-item-name {
-    font-weight: bold;
+    font-weight: 700;
+    color: #1b1b1f;
 }
 
 .cart-item-price {
-    color: #666;
+    color: #6b6b74;
     font-size: 14px;
 }
 
@@ -307,86 +336,89 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .qty-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .qty-btn {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     border: none;
     border-radius: 50%;
     background: #ff6b6b;
     color: white;
     cursor: pointer;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 34px;
 }
 
 .qty-btn.minus {
-    background: #999;
+    background: #7d7d86;
 }
 
 .delete-btn {
     border: none;
     background: transparent;
-    color: #d9534f;
+    color: #d64545;
     cursor: pointer;
 }
 
 .empty-cart {
-    color: #888;
+    color: #8a8a95;
     font-size: 14px;
-    padding: 10px 0;
+    padding: 12px 0;
 }
 
 .cart-footer {
-    border-top: 1px solid #eee;
-    padding: 14px 16px;
-    background: #fafafa;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .cart-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .cart-count-text {
-    font-weight: bold;
-    color: #333;
+    font-weight: 700;
+    color: #222;
 }
 
 .cart-total {
-    font-weight: bold;
-    color: #ff6b6b;
+    font-weight: 700;
+    color: #ff5e61;
 }
 
 .checkout-btn {
     width: 100%;
     border: none;
-    border-radius: 10px;
-    padding: 12px;
-    background: #ff6b6b;
+    border-radius: 16px;
+    padding: 14px;
+    background: #ff5f63;
     color: white;
     font-size: 16px;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .checkout-btn:hover {
-    background: #ff4f4f;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(255, 95, 104, 0.24);
 }
 
 /* ================= 模态弹窗 ================= */
 .modal-mask {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(15, 23, 42, 0.28);
     display: none;
     align-items: center;
     justify-content: center;
@@ -401,45 +433,196 @@ body {
     width: 420px;
     max-height: 80vh;
     overflow-y: auto;
-    background: white;
-    border-radius: 14px;
-    padding: 24px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.16);
 }
 
 .modal-box h3 {
     margin-top: 0;
-    color: #28a745;
+    color: #ff6b6b;
 }
 
 .order-info p {
-    margin: 8px 0;
+    margin: 10px 0;
+    color: #333;
 }
 
 .order-items {
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .order-item {
     display: flex;
     justify-content: space-between;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .modal-close-btn {
-    margin-top: 16px;
+    margin-top: 22px;
     border: none;
-    border-radius: 8px;
-    padding: 10px 18px;
-    background: #ff6b6b;
+    border-radius: 16px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ff3f5a);
     color: white;
     cursor: pointer;
 }
 
 .loading-text {
-    color: #666;
+    color: #6b6b74;
     font-size: 14px;
-    margin-top: 8px;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .top-bar {
+        padding: 0 16px;
+    }
+
+    .top-bar-title {
+        font-size: 20px;
+    }
+
+    .user-widget {
+        right: 16px;
+        top: 10px;
+        padding: 8px 12px;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 14px;
+        height: calc(100vh - 64px - 76px);
+        padding: 0 12px 96px;
+        overflow: hidden;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 80px;
+        width: 140px;
+        min-width: 140px;
+        background: rgba(255, 255, 255, 0.98);
+        border-right: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: none;
+        padding: 16px 10px;
+        margin: 0;
+        border-radius: 24px;
+        overflow-y: auto;
+        max-height: calc(100vh - 64px - 76px);
+        align-self: start;
+    }
+
+    .category {
+        width: 100%;
+        margin-bottom: 12px;
+        background: rgba(245, 247, 250, 0.98);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 18px;
+        border-radius: 28px;
+        box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+        height: calc(100vh - 64px - 76px);
+        overflow-y: auto;
+    }
+
+    .section {
+        padding: 18px;
+    }
+
+    .section h2 {
+        font-size: 20px;
+    }
+
+    .item {
+        padding: 20px;
+        min-height: 112px;
+    }
+
+    .item-left {
+        gap: 14px;
+    }
+
+    .item-image {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+    }
+
+    .add-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .cart-panel {
+        right: 12px;
+        width: calc(100% - 24px);
+        bottom: 88px;
+    }
+
+    .bottom-nav-bar {
+        height: auto;
+        padding: 10px 12px;
+    }
+
+    .nav-item {
+        flex: 1 1 auto;
+        margin: 6px 4px;
+        width: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-bar {
+        height: 56px;
+    }
+
+    .top-bar-title {
+        font-size: 18px;
+    }
+
+    .user-widget {
+        right: 12px;
+        padding: 8px 10px;
+    }
+
+    .container {
+        grid-template-columns: 120px minmax(0, 1fr);
+    }
+
+    .sidebar {
+        width: 120px;
+        min-width: 120px;
+        padding: 12px 10px;
+        max-height: calc(100vh - 56px - 76px);
+    }
+
+    .content {
+        padding: 14px;
+    }
+
+    .item {
+        gap: 12px;
+        padding: 18px;
+        min-height: 120px;
+    }
+
+    .item-image {
+        width: 72px;
+        height: 72px;
+    }
+
+    .add-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
 }

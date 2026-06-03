@@ -1,53 +1,87 @@
 {
-    "主食": [
+    "火锅底料": [
         {
-            "name": "红烧牛肉面",
+            "name": "麻辣锅底",
             "price": "18元",
-            "image": "/static/images/hs_noodle.png"
+            "image": "/static/images/hotpot_base_mala.png"
         },
         {
-            "name": "小肉面",
+            "name": "番茄锅底",
             "price": "15元",
-            "image": "/static/images/xr_noodle.jpg"
+            "image": "/static/images/hotpot_base_tomato.png"
         },
         {
-            "name": "大肉面",
+            "name": "菌汤锅底",
             "price": "18元",
-            "image": "/static/images/dr_noodle.jpg"
-        },
-        {
-            "name": "炸酱面",
-            "price": "15元"
-        },
-        {
-            "name": "炸酱面",
-            "price": "15元"
-        },
-        {
-            "name": "麻辣肉面",
-            "price": "15元"
-        },
-        {
-            "name": "扬州炒饭",
-            "price": "15元"
-        },
-        {
-            "name": "蛋炒饭",
-            "price": "12元"
+            "image": "/static/images/hotpot_base_mushroom.png"
         }
     ],
-    "下饭菜": [
+    "配菜(需搭配锅底)": [
         {
-            "name": "鱼香肉丝",
+            "name": "羊肉卷",
             "price": "22元"
         },
         {
-            "name": "宫保鸡丁",
+            "name": "牛肉卷",
             "price": "24元"
         },
         {
-            "name": "麻婆豆腐",
+            "name": "猪肉卷",
             "price": "16元"
+        },
+        {
+            "name": "羊肉卷",
+            "price": "22元"
+        },
+        {
+            "name": "乌鸡卷",
+            "price": "12元"
+        },
+        {
+            "name": "手切羊肉",
+            "price": "28元"
+        },
+        {
+            "name": "手切牛肉",
+            "price": "30元"
+        },
+        {
+            "name": "麻辣牛肉",
+            "price": "24元"
+        }
+    ],
+    "蔬菜(需搭配锅底)": [
+        {
+            "name": "冻豆腐",
+            "price": "10元"
+        },
+        {
+            "name": "豆腐皮",
+            "price": "8元"
+        },
+        {
+            "name": "茼蒿",
+            "price": "6元"
+        },
+        {
+            "name": "生菜",
+            "price": "6元"
+        },
+        {
+            "name": "菠菜",
+            "price": "6元"
+        },
+        {
+            "name": "娃娃菜",
+            "price": "6元"
+        },
+        {
+            "name": "金针菇",
+            "price": "8元"
+        },
+        {
+            "name": "腐竹",
+            "price": "4元"
         }
     ],
     "饮品": [
