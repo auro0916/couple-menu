@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商户端首页</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/merchant_home.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>商户端首页</h1>
+            <p>欢迎你，{{ username }}。你可以在这里查看订单、进入用户端页面或退出登录。</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>订单管理</h2>
+                <p>查看全部用户订单，及时处理接单、制作和完成状态。</p>
+                <a href="/merchant/orders" class="btn">查看全部订单</a>
+            </div>
+
+            <div class="card">
+                <h2>用户首页</h2>
+                <p>返回前台用户页面，查看当前点餐系统的用户端展示效果。</p>
+                <a href="/" class="btn btn-secondary">进入用户首页</a>
+            </div>
+
+            <div class="card">
+                <h2>账号操作</h2>
+                <p>如果你已经完成本次操作，可以安全退出当前商户账号。</p>
+                <a href="/logout" class="btn btn-danger">退出登录</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            商户后台管理页面
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点菜系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="top-bar-title">点菜系统</div>
+    </div>
+
+    <div class="user-widget">
+        <div class="user-name">{{ username }}</div>
+        <span class="user-divider">|</span>
+        <a href="{{ url_for('logout') }}" class="logout-link">退出登录</a>
+    </div>
+
+    <div class="bottom-nav-bar">
+        <a href="/profile" class="nav-item">个人中心</a>
+        <a href="/orders" class="nav-item">查看订单</a>
+        <button class="nav-item" onclick="toggleCart()">
+            购物车
+            <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            {% for category in menu_data.keys() %}
+            <div class="category {% if loop.first %}active{% endif %}" data-target="{{ category }}"
+                onclick="scrollToSection('{{ category }}')">
+                {{ category }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="content" id="content">
+            {% for category, items in menu_data.items() %}
+            <div class="section" id="{{ category }}">
+                <h2>{{ category }}</h2>
+                {% for item in items %}
+                <div class="item">
+                    <div class="item-left">
+                        <img class="item-image" src="{{ item.image }}" alt="{{ item.name }}"
+                            onerror="this.style.display='none';">
+                        <div class="item-info">
+                            <div class="item-name">{{ item.name }}</div>
+                            <div class="item-price">{{ item.price }}</div>
+                        </div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('{{ item.name }}', '{{ item.price }}')">+</button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <span>已选商品</span>
+            <button class="cart-clear" onclick="clearCart()">清空</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">还没有选择商品</div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <div class="cart-count-text" id="cart-count-text">共 0 件</div>
+                <div class="cart-total" id="cart-total">合计：0元</div>
+            </div>
+            <button class="checkout-btn" id="checkout-btn" onclick="checkout()">结算</button>
+            <div class="loading-text" id="loading-text" style="display: none;">正在生成订单...</div>
+        </div>
+    </div>
+
+    <div class="modal-mask" id="order-modal">
+        <div class="modal-box">
+            <h3>下单成功</h3>
+            <div class="order-info" id="order-info"></div>
+            <button class="modal-close-btn" onclick="closeOrderModal()">知道了</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+
+</html>

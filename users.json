@@ -1,0 +1,26 @@
+[
+  {
+    "username": "alice",
+    "password": "123456",
+    "order_count": 2,
+    "role": "user"
+  },
+  {
+    "username": "merchant",
+    "password": "admin123",
+    "order_count": 0,
+    "role": "merchant"
+  },
+  {
+    "username": "auro0916",
+    "password": "123",
+    "order_count": 7,
+    "role": "user"
+  },
+  {
+    "username": "hori",
+    "password": "123",
+    "order_count": 0,
+    "role": "user"
+  }
+]
