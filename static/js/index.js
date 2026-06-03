@@ -291,11 +291,23 @@ content.addEventListener("scroll", updateActiveCategoryOnScroll);
 loadCartFromStorage();
 renderCart();
 
+const cartPanel = document.getElementById("cart-panel");
+const cartButton = document.querySelector('[onclick="toggleCart()"]');
+
+if (cartPanel) {
+    cartPanel.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+}
+
+if (cartButton) {
+    cartButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+}
+
 // 已修正：完美适配满宽底部栏的外部点击关闭逻辑
 document.addEventListener("click", function (event) {
-    const cartPanel = document.getElementById("cart-panel");
-    const cartButton = document.querySelector('[onclick="toggleCart()"]');
-
     // 确保页面上存在这两个元素，并且购物车当前是打开状态
     if (cartPanel && cartButton && cartPanel.classList.contains("show")) {
         const clickedInsidePanel = cartPanel.contains(event.target);
