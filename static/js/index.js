@@ -186,10 +186,6 @@ function renderCart() {
     }
 }
 
-function openCart() {
-    document.getElementById("cart-panel").classList.add("show");
-}
-
 function closeCart() {
     document.getElementById("cart-panel").classList.remove("show");
 }

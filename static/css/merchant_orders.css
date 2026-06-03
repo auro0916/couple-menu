@@ -2,6 +2,15 @@
     box-sizing: border-box;
 }
 
+:root{
+    --bg: #eef3f8;
+    --card: #ffffff;
+    --primary: #4666ff;
+    --accent: #ffd24d;
+    --danger: #ff5f63;
+    --muted: #606978;
+}
+
 html,
 body {
     min-height: 100%;
@@ -10,7 +19,7 @@ body {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-    background: #eef3f8;
+    background: var(--bg);
     color: #111;
     padding: 0;
 }
@@ -21,81 +30,105 @@ body {
     padding: 20px 18px 30px;
 }
 
-h1 {
-    margin: 0 0 18px;
-    font-size: 34px;
-    font-weight: 800;
-    letter-spacing: 0.35px;
-}
 
-.top-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 22px;
-}
-
-.top-links a {
-    flex: 1 1 220px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 16px;
-    border-radius: 16px;
-    background: #ffffff;
-    color: #4666ff;
-    text-decoration: none;
-    border: 1px solid rgba(70, 102, 255, 0.16);
-    box-shadow: 0 16px 40px rgba(70, 102, 255, 0.08);
-    font-weight: 700;
-}
-
-.top-links a:hover {
-    background: #f5f8ff;
-}
 
 .order-card {
-    background: #ffffff;
-    border-radius: 28px;
-    padding: 26px 24px;
-    margin-bottom: 22px;
-    box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    min-height: 240px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 30px rgba(15,23,42,0.04);
+    border: 1px solid rgba(15,23,42,0.03);
 }
 
 .order-head {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: flex-start;
-    margin-bottom: 16px;
-}
-
-.order-head span {
-    font-size: 16px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
     font-weight: 700;
 }
 
-.order-head .status {
-    color: #ff5f63;
+.header {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.05);
+    border: 1px solid rgba(15,23,42,0.06);
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    margin: -15px 0 0 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.15;
+}
+
+h1 {
+    margin: 6px 0 14px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.15px;
+}
+
+
+
+
+
+.action-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+    flex-wrap: nowrap;
+}
+
+
+.status-form {
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-form button {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* make each action take equal width in the row */
+.action-row .status-form button {
+    flex: 1 1 0;
+}
+
+.status-form button:hover {
+    transform: translateY(-2px);
 }
 
 .order-meta {
-    margin-bottom: 18px;
-    color: #606978;
-    font-size: 15px;
-    line-height: 1.9;
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 .item-row {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px dashed rgba(15, 23, 42, 0.12);
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(15, 23, 42, 0.08);
     font-size: 15px;
 }
 
@@ -108,81 +141,50 @@ h1 {
 }
 
 .total {
-    margin-top: 18px;
+    margin-top: 14px;
     font-size: 17px;
-    font-weight: 700;
-    color: #d64545;
-}
-
-.details-container {
-    margin-top: 18px;
-}
-
-.details-link {
-    display: inline-flex;
-    padding: 12px 16px;
-    border-radius: 14px;
-    background: #4666ff;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.details-link:hover {
-    background: #3551d8;
-}
-
-.status-form {
-    margin-top: 20px;
-    display: grid;
-    gap: 12px;
+    font-weight: 800;
+    color: var(--danger);
 }
 
 .status-form button {
-    width: 100%;
-    padding: 14px 0;
-    border: none;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
-    color: #333;
-    font-size: 15px;
+    min-height: 44px;
+}
+
+.top-links {
+    display: flex;
+    gap: 12px;
+    /* margin-bottom: 18px; */
+    align-items: center;
+}
+
+.top-links a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--primary);
+    text-decoration: none;
+    border: 1px solid rgba(70, 102, 255, 0.08);
+    box-shadow: 0 6px 18px rgba(70, 102, 255, 0.04);
     font-weight: 700;
-    cursor: pointer;
-    transition: background 0.18s ease, transform 0.18s ease;
+    min-width: 120px;
 }
 
-.status-form button:hover {
-    background: #f5f7fb;
-    transform: translateY(-1px);
+.top-links a:hover {
+    background: rgba(70,102,255,0.04);
+
 }
 
-.status-form button[value="已接单"],
-.status-form button[value="制作中"],
-.status-form button[value="已完成"] {
-    background: #4666ff;
-    color: #ffffff;
-}
-
-.status-form button[value="已接单"]:hover,
-.status-form button[value="制作中"]:hover,
-.status-form button[value="已完成"]:hover {
-    background: #3551d8;
-}
-
-.status-form button[value="已取消"] {
-    background: #ff5f63;
-    color: #ffffff;
-}
-
-.status-form button[value="已取消"]:hover {
-    background: #d64545;
-}
+/* use classes (.btn-accent, .btn-outline-danger) for button colors */
 
 .status-tip {
-    margin-top: 18px;
-    color: #606978;
-    font-size: 15px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 .empty {
@@ -218,13 +220,15 @@ h1 {
         padding: 14px 0;
     }
 
-    .details-link {
-        margin-top: 22px;
-        padding: 14px 16px;
-        font-size: 16px;
-    }
-
     .status-form {
         gap: 14px;
+    }
+
+    .action-row {
+        flex-wrap: wrap;
+    }
+
+    .action-row .status-form {
+        flex: 1 1 auto;
     }
 }
