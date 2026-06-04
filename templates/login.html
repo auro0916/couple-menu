@@ -5,28 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- - primary meta tags -->
     <title>用户登录 - 奶龙厨房</title>
     <meta name="title" content="用户登录 - 奶龙厨房">
     <meta name="description" content="奶龙厨房用户登录页面">
-    <!-- - favicon -->
     <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
-    <!-- - custom css link -->
     <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="/static/assets/css/login.css">
-    <!-- - google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('/static/assets/images/hero-bg.png') !important;
+            background-size: cover !important;
+            background-position: top center !important;
+            background-attachment: fixed !important;
+        }
+        main, article, .login-section { background: transparent !important; }
+    </style>
 </head>
 
 <body>
-    <!-- - #PRELOADER -->
     <div class="loading-container" data-loading-container>
         <div class="loading-circle"></div>
     </div>
 
-    <!-- - #HEADER -->
     <header class="header" data-header>
         <div class="container">
             <a href="/" class="logo">
@@ -93,7 +97,7 @@
                                     placeholder="请输入密码" required>
                             </div>
 
-                            <div class="form-group form-checkbox" data-reveal>
+                            <div class="form-group" data-reveal>
                                 <input type="checkbox" id="remember" name="remember" class="checkbox-input">
                                 <label for="remember" class="checkbox-label">记住我的账户</label>
                             </div>
@@ -104,7 +108,7 @@
                         <div class="login-footer" data-reveal>
                             <a href="#" class="forgot-link">忘记密码？</a>
                             <div class="signup-link">
-                                还没有账户？<a href="#">立即注册</a>
+                                还没有账户？<a href="{{ url_for('register') }}">立即注册</a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +122,6 @@
         </article>
     </main>
 
-    <!-- - #FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="section footer-top grid-list">
@@ -202,9 +205,7 @@
         </div>
     </footer>
 
-    <!-- - custom js link -->
     <script src="/static/assets/js/script.js"></script>
-    <!-- - ionicon link -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
