@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- - primary meta tags -->
+    <title>用户登录 - 奶龙厨房</title>
+    <meta name="title" content="用户登录 - 奶龙厨房">
+    <meta name="description" content="奶龙厨房用户登录页面">
+    <!-- - favicon -->
+    <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+    <!-- - custom css link -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/login.css">
+    <!-- - google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- - #PRELOADER -->
+    <div class="loading-container" data-loading-container>
+        <div class="loading-circle"></div>
+    </div>
+
+    <!-- - #HEADER -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/static/assets/images/logo.png" width="148" height="38" alt="Fasteat home">
+            </a>
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+                <a href="/" class="logo">
+                    <img src="/static/assets/images/logo.png" width="148" height="38" alt="Fasteat home">
+                </a>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="/" class="navbar-link" data-nav-link>主页</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/" class="navbar-link" data-nav-link>关于我们</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-action">
+                <button class="cart-btn" aria-label="cart">
+                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
+                </button>
+                <a href="/" class="btn btn-primary has-after">返回首页</a>
+            </div>
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+            <div class="overlay" data-overlay data-nav-toggler></div>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <section class="section login-section" aria-label="login">
+                <div class="container login-container">
+                    <div class="login-content" data-reveal="left">
+                        <h1 class="h1 login-title">欢迎回来</h1>
+                        <p class="login-subtitle">登录你的账户开始订餐</p>
+
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="flash-messages"
+                            style="color: #ff4d4d; margin-bottom: 15px; font-size: 14px; background-color: #ffe6e6; padding: 10px; border-radius: 5px;">
+                            {% for message in messages %}
+                            <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+                        <form class="login-form" method="POST" data-reveal>
+                            <div class="form-group" data-reveal>
+                                <label for="username_input" class="form-label">用户名</label>
+                                <input type="text" id="username_input" name="username" class="form-input"
+                                    placeholder="请输入用户名" required>
+                            </div>
+
+                            <div class="form-group" data-reveal>
+                                <label for="password" class="form-label">密码</label>
+                                <input type="password" id="password" name="password" class="form-input"
+                                    placeholder="请输入密码" required>
+                            </div>
+
+                            <div class="form-group form-checkbox" data-reveal>
+                                <input type="checkbox" id="remember" name="remember" class="checkbox-input">
+                                <label for="remember" class="checkbox-label">记住我的账户</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-login has-after" data-reveal>登录</button>
+                        </form>
+
+                        <div class="login-footer" data-reveal>
+                            <a href="#" class="forgot-link">忘记密码？</a>
+                            <div class="signup-link">
+                                还没有账户？<a href="#">立即注册</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login-image" data-reveal="right">
+                        <img src="/static/assets/images/home-image.png" width="400" height="450" alt="login image"
+                            class="w-100">
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- - #FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="section footer-top grid-list">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="/static/assets/images/logo-footer.svg" width="148" height="38" alt="fasteat home">
+                    </a>
+                    <h2 class="h2 section-title">最好的厨房<br>永远是家</h2>
+                    <p class="section-text">
+                        在外的餐厅，有万千风味<br>
+                        有精心雕琢的佳肴，却少了一份独有的温度。<br>
+                        流水线的烹饪，终究复刻不了心底的踏实与温柔。<br>
+                        我们始终相信，最好的厨房，永远是家。<br>
+                        一把烟火，一勺温热，是亲手调配的心意<br>
+                        是专属家人的偏爱，把平淡日子，熬成温柔的光景。
+                    </p>
+                </div>
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title h5">菜单</p>
+                    </li>
+                    <li>
+                        <a href="/" class="footer-link">
+                            <span class="span">主页</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="footer-link">
+                            <span class="span">关于我们</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title h5">联系我们</p>
+                    </li>
+                    <li>
+                        <address class="address">
+                            <ion-icon name="location" aria-hidden="true"></ion-icon>
+                            <span class="span">上海市徐汇区奶龙镇4丁目3番地9号</span>
+                        </address>
+                    </li>
+                    <li>
+                        <a href="mailto:DragonNai@gmail.com" class="footer-link">
+                            <ion-icon name="mail" aria-hidden="true"></ion-icon>
+                            <span class="span">DragonNai@gmail.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+81-90-8233-4311" class="footer-link">
+                            <ion-icon name="call" aria-hidden="true"></ion-icon>
+                            <span class="span">+81-90-8233-4311</span>
+                        </a>
+                    </li>
+                    <li>
+                        <ul class="social-list">
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link">
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">Copyright 2022 codewithsadee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- - custom js link -->
+    <script src="/static/assets/js/script.js"></script>
+    <!-- - ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
