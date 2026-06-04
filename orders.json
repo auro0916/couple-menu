@@ -338,7 +338,7 @@
   {
     "order_id": "ORD20260603194709",
     "username": "auro0916",
-    "status": "待接单",
+    "status": "已取消",
     "created_at": "2026-06-03 19:47:09",
     "items": [
       {
@@ -349,5 +349,77 @@
       }
     ],
     "total": "54.0元"
+  },
+  {
+    "order_id": "ORD20260603202807",
+    "username": "auro0916",
+    "status": "已取消",
+    "created_at": "2026-06-03 20:28:07",
+    "items": [
+      {
+        "name": "小肉面",
+        "price": "15元",
+        "quantity": 8,
+        "item_total": "120.0元"
+      }
+    ],
+    "total": "120.0元"
+  },
+  {
+    "order_id": "ORD20260603203005",
+    "username": "auro0916",
+    "status": "已取消",
+    "created_at": "2026-06-03 20:30:05",
+    "items": [
+      {
+        "name": "红烧牛肉面",
+        "price": "18元",
+        "quantity": 5,
+        "item_total": "90.0元"
+      }
+    ],
+    "total": "90.0元"
+  },
+  {
+    "order_id": "ORD20260603212110",
+    "username": "auro0916",
+    "status": "已取消",
+    "created_at": "2026-06-03 21:21:10",
+    "items": [
+      {
+        "name": "菌汤锅底",
+        "price": "18元",
+        "quantity": 2,
+        "item_total": "36.0元"
+      }
+    ],
+    "total": "36.0元"
+  },
+  {
+    "order_id": "ORD20260604003625",
+    "username": "auro0916",
+    "status": "制作中",
+    "created_at": "2026-06-04 00:36:25",
+    "items": [
+      {
+        "name": "麻辣锅底",
+        "price": "18元",
+        "quantity": 1,
+        "item_total": "18.0元"
+      },
+      {
+        "name": "羊肉卷",
+        "price": "22元",
+        "quantity": 1,
+        "item_total": "22.0元"
+      },
+      {
+        "name": "牛肉卷",
+        "price": "24元",
+        "quantity": 1,
+        "item_total": "24.0元"
+      }
+    ],
+    "total": "64.0元"
   }
 ]

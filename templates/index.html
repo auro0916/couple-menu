@@ -1,94 +1,208 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>点菜系统</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- - primary meta tags -->
+  <title>Fasteat - 最好的厨房永远是家</title>
+  <meta name="title" content="Fasteat - 最好的厨房<br>永远是家">
+  <meta name="description" content="This is a food html template made by codewithsadee">
+  <!-- - favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <!-- - custom css link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- - google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- - preload images -->
 </head>
-
 <body>
-    <div class="top-bar">
-        <div class="top-bar-title">点菜系统</div>
-    </div>
-
-    <div class="user-widget">
-        <div class="user-name">{{ username }}</div>
-        <span class="user-divider">|</span>
-        <a href="{{ url_for('logout') }}" class="logout-link">退出登录</a>
-    </div>
-
-    <div class="bottom-nav-bar">
-        <a href="/profile" class="nav-item">个人中心</a>
-        <a href="/orders" class="nav-item">查看订单</a>
-        <button class="nav-item" onclick="toggleCart()">
-            购物车
-            <span class="cart-badge" id="cart-badge">0</span>
-        </button>
-    </div>
-
+  <!-- - #PRELOADER -->
+  <div class="loading-container" data-loading-container>
+    <div class="loading-circle"></div>
+  </div>
+  <!-- - #HEADER -->
+  <header class="header" data-header>
     <div class="container">
-        <div class="sidebar" id="sidebar">
-            {% for category in menu_data.keys() %}
-            <div class="category {% if loop.first %}active{% endif %}" data-target="{{ category }}"
-                onclick="scrollToSection('{{ category }}')">
-                {{ category }}
-            </div>
-            {% endfor %}
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="148" height="38" alt="Fasteat home">
+      </a>
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="148" height="38" alt="Fasteat home">
+        </a>
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>主页</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>关于我们</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-action">
+        <button class="cart-btn" aria-label="cart">
+          <ion-icon name="bag" aria-hidden="true"></ion-icon>
+        </button>
+        <a href="#" class="btn btn-primary has-after">开始订餐</a>
+      </div>
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+      <div class="overlay" data-overlay data-nav-toggler></div>
+    </div>
+  </header>
+  <main>
+    <article>
+      <!-- - #HERO -->
+      <section class="section hero has-bg-image" aria-label="home" style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+          <div class="hero-content" data-reveal="left">
+            <h1 class="h1 hero-title">最好的厨房<br>永远是家</h1>
+            <p class="hero-text">当你不知道吃什么，就问问奶龙厨房吧。</p>
+            <a href="#" class="btn btn-secondary has-after">开始订餐</a>
+          </div>
+          <figure class="hero-banner" data-reveal>
+            <img src="./assets/images/home-image.png" width="680" height="720" alt="hero banner" class="w-100">
+            <img src="./assets/images/hero-shape-1.svg" width="338" height="138" alt="shape" class="shape shape-1">
+            <img src="./assets/images/hero-shape-2.svg" width="237" height="80" alt="shape" class="shape shape-2">
+          </figure>
         </div>
-
-        <div class="content" id="content">
-            {% for category, items in menu_data.items() %}
-            <div class="section" id="{{ category }}">
-                <h2>{{ category }}</h2>
-                {% for item in items %}
-                <div class="item">
-                    <div class="item-left">
-                        <img class="item-image" src="{{ item.image }}" alt="{{ item.name }}"
-                            onerror="this.style.display='none';">
-                        <div class="item-info">
-                            <div class="item-name">{{ item.name }}</div>
-                            <div class="item-price">{{ item.price }}</div>
-                        </div>
-                    </div>
-                    <button class="add-btn" onclick="addToCart('{{ item.name }}', '{{ item.price }}')">+</button>
+      </section>
+      <!-- - #INSTRUCTION -->
+      <section class="section instruction" aria-labelledby="">
+        <div class="container">
+          <h2 class="h2 section-title" id="instruction-label" data-reveal>我们如何制作</h2>
+          <p class="section-text" data-reveal>在接收到用户订单后，我们会迅速的通知奶龙厨房以及豆包大厨，并且提供美味食物。</p>
+          <ul class="grid-list">
+            <li data-reveal="left">
+              <div class="instruction-card">
+                <figure class="card-banner">
+                  <img src="./assets/images/instructuion-1.png" width="300" height="154" loading="lazy" alt="选择料理" class="w-100">
+                </figure>
+                <div class="card-content">
+                  <h3 class="h5 card-title">
+                    <span class="span">01</span>
+                    选择料理
+                  </h3>
+                  <p class="card-text">我们提供了丰富的料理，当然也包括了奶龙厨房和豆包大厨的招牌菜。我们相信总有一款适合你。</p>
                 </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
+              </div>
+            </li>
+            <li data-reveal>
+              <div class="instruction-card">
+                <figure class="card-banner">
+                  <img src="./assets/images/instructuion-2.png" width="300" height="154" loading="lazy" alt="Select menu" class="w-100">
+                </figure>
+                <div class="card-content">
+                  <h3 class="h5 card-title">
+                    <span class="span">02</span>
+                    迅速响应
+                  </h3>
+                  <p class="card-text">我们利用Amazon云服务，实现Webhook传输，确保在接收到用户订单后，能够迅速的通知奶龙厨房以及豆包大厨，并且提供美味食物。</p>
+                </div>
+              </div>
+            </li>
+            <li data-reveal="right">
+              </div>
+            </li>
+          </ul>
         </div>
+      </section>
+    </article>
+  </main>
+  <!-- - #FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="section footer-top grid-list">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="./assets/images/logo-footer.svg" width="148" height="38" alt="fasteat home">
+          </a>
+          <h2 class="h2 section-title">最好的厨房<br>永远是家</h2>
+          <p class="section-text">
+            在外的餐厅，有万千风味<br>
+            有精心雕琢的佳肴，却少了一份独有的温度。<br>
+            流水线的烹饪，终究复刻不了心底的踏实与温柔。<br>
+            我们始终相信，最好的厨房，永远是家。<br>
+            一把烟火，一勺温热，是亲手调配的心意<br>
+            是专属家人的偏爱，把平淡日子，熬成温柔的光景。
+          </p>
+        </div>
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title h5">菜单</p>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="span">主页</span>
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="span">关于我们</span>
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+          </li>
+        </ul>
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title h5">联系我们</p>
+          </li>
+          <li>
+            <address class="address">
+              <ion-icon name="location" aria-hidden="true"></ion-icon>
+              <span class="span">上海市徐汇区奶龙镇4丁目3番地9号</span>
+            </address>
+          </li>
+          <li>
+            <a href="mailto:DragonNai@gmail.com" class="footer-link">
+              <ion-icon name="mail" aria-hidden="true"></ion-icon>
+              <span class="span">DragonNai@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+81-90-8233-4311" class="footer-link">
+              <ion-icon name="call" aria-hidden="true"></ion-icon>
+              <span class="span">+81-90-8233-4311</span>
+            </a>
+          </li>
+          <li>
+            <ul class="social-list">
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">Copyright 2022 codewithsadee. All rights reserved.</p>
+      </div>
     </div>
-
-    <div class="cart-panel" id="cart-panel">
-        <div class="cart-header">
-            <span>已选商品</span>
-            <button class="cart-clear" onclick="clearCart()">清空</button>
-        </div>
-
-        <div class="cart-items" id="cart-items">
-            <div class="empty-cart">还没有选择商品</div>
-        </div>
-
-        <div class="cart-footer">
-            <div class="cart-summary">
-                <div class="cart-count-text" id="cart-count-text">共 0 件</div>
-                <div class="cart-total" id="cart-total">合计：0元</div>
-            </div>
-            <button class="checkout-btn" id="checkout-btn" onclick="checkout()">结算</button>
-            <div class="loading-text" id="loading-text">正在生成订单...</div>
-        </div>
-    </div>
-
-    <div class="modal-mask" id="order-modal">
-        <div class="modal-box">
-            <h3>下单成功</h3>
-            <div class="order-info" id="order-info"></div>
-            <button class="modal-close-btn" onclick="closeOrderModal()">知道了</button>
-        </div>
-    </div>
-
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </footer>
+  <!-- - custom js link -->
+  <script src="./assets/js/script.js"></script>
+  <!-- - ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
