@@ -3,17 +3,17 @@
         {
             "name": "麻辣锅底",
             "price": "18元",
-            "image": "/static/images/hotpot_base_mala.png"
+            "image": "./static/assets/images/mk.jpg"
         },
         {
             "name": "番茄锅底",
             "price": "15元",
-            "image": "/static/images/hotpot_base_tomato.png"
+            "image": ""
         },
         {
             "name": "菌汤锅底",
             "price": "18元",
-            "image": "/static/images/hotpot_base_mushroom.png"
+            "image": ""
         }
     ],
     "配菜(需搭配锅底)": [
